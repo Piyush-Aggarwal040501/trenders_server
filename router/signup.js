@@ -16,7 +16,7 @@ router.post('/api/signup', async (req,res)=>{
         }else{
             const newUser = new User({email,password});
             let token = await newUser.generateToken();
-            res.cookie('userToken',token,{httpOnly:true});
+            res.cookie('userToken',token,{httpOnly:true, secure: true});
             await newUser.save();
             res.status(201).json({message:"registered successfully"})
         }
