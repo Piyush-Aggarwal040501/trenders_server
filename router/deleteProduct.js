@@ -15,7 +15,7 @@ router.post("/api/deleteProduct", async (req,res)=>{
         product = product.img;
         // console.log(product);
         await Product.deleteOne({productId:productId});
-        fs.unlink('public//'+product,(err)=>{
+        fs.unlink('public//products//'+product,(err)=>{
             console.log(err);
             return;
         });

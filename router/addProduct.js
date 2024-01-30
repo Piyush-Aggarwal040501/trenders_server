@@ -36,7 +36,7 @@ const Product = require('../schema/productSchema');
 // for getting image multer is used
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public')
+      cb(null, 'public/products');
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + '-' + file.originalname)
