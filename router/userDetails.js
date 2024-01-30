@@ -18,9 +18,9 @@ const findProductId = (cart)=>{
 }
 
 
-router.get('/api/userDetails', async (req,res)=>{
+router.post('/api/userDetails', async (req,res)=>{
     try{
-        let token = req.cookies.userToken
+        let token = req.body.token;
         if(!token){
             res.status(401).json({data:"not regestered"});
         }else{
@@ -44,7 +44,7 @@ router.get('/api/userDetails', async (req,res)=>{
         }    
     }catch(err){
         res.status(500).json({data:"there is error and we are not getting try block"});
-        console.log(err)
+        // console.log(err)
     }
 
 })

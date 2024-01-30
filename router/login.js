@@ -16,10 +16,7 @@ router.post('/api/login', async (req,res)=>{
             const isMatch = await bcrypt.compare(password,userExist.password);
             if(isMatch){
                 let token = await userExist.generateToken();
-                res.cookie('userToken',token,{
-                    httpOnly:true
-                });
-                res.status(200).json({message:'Sign In successfully'});
+                res.status(200).json({token:token});
             }else{
                 res.status(404).json({message:"password or username is incorrect"});
             }
